@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Peru 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lavender: #b8a9d9;
+    --lavender-light: #e8e2f5;
+    --lavender-pale: #f5f2fc;
+    --lavender-mid: #c9bce6;
+    --lavender-deep: #8a77c0;
+    --lavender-dark: #5c4d8a;
+    --white: #ffffff;
+    --text-dark: #3a2f5c;
+    --text-mid: #6b5d8a;
+    --text-soft: #9b8fba;
+    --petal-pink: #e8c4d4;
+    --petal-rose: #d4a0bc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--lavender-pale);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--lavender-deep);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-trail {
+    position: fixed;
+    width: 30px; height: 30px;
+    border: 1.5px solid var(--lavender-mid);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, left 0.12s ease, top 0.12s ease;
+    opacity: 0.6;
+  }
+
+  /* Floating petals */
+  .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: floatPetal linear infinite;
+  }
+  @keyframes floatPetal {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Section base */
+  section { position: relative; z-index: 2; }
+
+  /* ─── HERO ─── */
+  #hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(160deg, #f0ecfb 0%, #e8e0f5 40%, #f8f4fe 100%);
+    overflow: hidden;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--lavender-light);
+    opacity: 0.5;
+    animation: breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.08); opacity: 0.6; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    color: var(--lavender-deep);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-dark);
+    opacity: 0;
+    animation: fadeUp 1.2s 0.6s forwards;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--lavender-deep);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 14vw, 11rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--lavender-deep);
+    line-height: 1;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.9s forwards;
+    letter-spacing: -0.03em;
+    position: relative;
+  }
+  .hero-name::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--lavender-mid);
+    animation: lineGrow 1s 2s forwards;
+  }
+  @keyframes lineGrow {
+    to { width: 60%; }
+  }
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--text-soft);
+    margin-top: 2rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 1s 1.4s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s 2.5s forwards;
+    cursor: pointer;
+    color: var(--text-soft);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--lavender-mid));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ─── ENVELOPE SECTION ─── */
+  #envelope-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--lavender-deep);
+    margin-bottom: 4rem;
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+  .section-label.visible { opacity: 1; }
+
+  .envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .envelope {
+    width: 320px;
+    height: 220px;
+    position: relative;
+    filter: drop-shadow(0 20px 60px rgba(138, 119, 192, 0.18));
+    transition: transform 0.3s ease;
+  }
+  .envelope:hover { transform: translateY(-4px); }
+
+  .envelope svg { width: 100%; height: 100%; }
+
+  .envelope-hint {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+    animation: gentlePulse 2s ease-in-out infinite;
+  }
+  @keyframes gentlePulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Letter modal */
+  .letter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(88, 72, 140, 0.25);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  .letter-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .letter-card {
+    background: var(--white);
+    border-radius: 2px;
+    width: min(600px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 4rem 3.5rem;
+    position: relative;
+    transform: translateY(40px) scale(0.97);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 40px 120px rgba(88, 72, 140, 0.2);
+    border-top: 3px solid var(--lavender-mid);
+  }
+  .letter-overlay.open .letter-card {
+    transform: translateY(0) scale(1);
+  }
+
+  .letter-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: none;
+    border: 1px solid var(--lavender-light);
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .letter-close:hover {
+    background: var(--lavender-pale);
+    border-color: var(--lavender-mid);
+    color: var(--lavender-dark);
+  }
+
+  .letter-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.85;
+    font-weight: 300;
+    color: var(--text-dark);
+  }
+  .letter-body em { color: var(--lavender-deep); font-style: italic; }
+  .letter-body p { margin-bottom: 1.5rem; }
+  .letter-body p:last-child { margin-bottom: 0; }
+
+  .letter-signature {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--lavender-deep);
+  }
+
+  /* ─── CAMERA POLAROID ─── */
+  #camera-section {
+    padding: 8rem 2rem;
+    background: var(--lavender-pale);
+    text-align: center;
+  }
+  .cam-subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-soft);
+    letter-spacing: 0.05em;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transition: opacity 0.8s 0.3s;
+  }
+  .cam-subtitle.visible { opacity: 1; }
+  .cam-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .viewfinder-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .viewfinder-frame {
+    position: relative;
+    width: 340px;
+    height: 280px;
+    background: #1a1228;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(88,72,140,0.25);
+  }
+  .viewfinder-frame video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vf-corners { position: absolute; inset: 0; pointer-events: none; }
+  .vfc {
+    position: absolute;
+    width: 18px; height: 18px;
+    border-color: var(--lavender-mid);
+    border-style: solid;
+    opacity: 0.8;
+  }
+  .vfc.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+  .vfc.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+  .vfc.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+  .vfc.br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+  .vf-flash {
+    position: absolute; inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.05s;
+  }
+  .vf-flash.flash { opacity: 1; }
+  .cam-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .cam-btn {
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.3s;
+    background: none;
+    font-size: 1.2rem;
+    color: var(--lavender-deep);
+  }
+  .cam-btn:active { transform: scale(0.92); }
+  .cam-secondary {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--lavender-mid) !important;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--lavender-deep);
+    background: var(--white) !important;
+  }
+  .cam-secondary:hover { background: var(--lavender-pale) !important; }
+  .cam-shutter {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    border: 3px solid var(--lavender-mid) !important;
+    background: var(--white) !important;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(138,119,192,0.2);
+  }
+  .cam-shutter:hover { border-color: var(--lavender-deep) !important; }
+  .shutter-inner {
+    display: block;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--lavender-mid);
+    transition: background 0.2s;
+  }
+  .cam-shutter:hover .shutter-inner { background: var(--lavender-deep); }
+  .cam-hint {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+  }
+  /* Polaroid wall */
+  .polaroid-wall {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-content: flex-start;
+    max-width: 520px;
+    min-height: 200px;
+  }
+  .wall-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    padding: 3rem;
+    border: 1.5px dashed var(--lavender-light);
+    border-radius: 4px;
+    width: 100%;
+    letter-spacing: 0.05em;
+  }
+  .cam-polaroid {
+    position: relative;
+    background: #fff;
+    padding: 10px 10px 36px;
+    box-shadow: 0 8px 32px rgba(88,72,140,0.15);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+    animation: polaroidDrop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    transform-origin: top center;
+  }
+  @keyframes polaroidDrop {
+    from { opacity: 0; transform: translateY(-30px) rotate(var(--prot)) scale(0.9); }
+    to   { opacity: 1; transform: translateY(0) rotate(var(--prot)); }
+  }
+  .cam-polaroid:hover {
+    transform: translateY(-6px) rotate(0deg) scale(1.04) !important;
+    box-shadow: 0 18px 50px rgba(88,72,140,0.22);
+    z-index: 10;
+  }
+  .cam-polaroid img {
+    display: block;
+    width: 200px; height: 160px;
+    object-fit: cover;
+  }
+  .cam-polaroid .pol-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: #6b5d8a;
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .cam-polaroid .pol-download {
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 22px; height: 22px;
+    background: var(--lavender-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    color: var(--lavender-deep);
+    opacity: 0;
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+  .cam-polaroid:hover .pol-download { opacity: 1; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .section-title.visible { opacity: 1; transform: translateY(0); }
+  .section-title em { font-style: italic; color: var(--lavender-deep); }
+
+  #reasons {
+    padding: 8rem 2rem;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .reasons-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .reason-card {
+    background: var(--lavender-pale);
+    border: 1px solid var(--lavender-light);
+    border-radius: 2px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, background 0.2s;
+    cursor: default;
+  }
+  .reason-card.visible { opacity: 1; transform: translateY(0); }
+  .reason-card:hover { background: var(--lavender-light); }
+
+  .reason-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--lavender-mid);
+    line-height: 1;
+    min-width: 2rem;
+    text-align: right;
+  }
+
+  .reason-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding-top: 0.35rem;
+  }
+
+  /* ─── WISH SECTION ─── */
+  #wish {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, var(--lavender-pale) 0%, #ece7f7 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wish-bloom {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--lavender-light) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .wish-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(8rem, 22vw, 18rem);
+    font-weight: 300;
+    color: var(--lavender-light);
+    line-height: 1;
+    position: absolute;
+    user-select: none;
+    letter-spacing: -0.05em;
+  }
+
+  .wish-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .wish-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .wish-quote.visible { opacity: 1; transform: translateY(0); }
+
+  .wish-from {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lavender-deep);
+    opacity: 0;
+    transition: opacity 0.8s 0.4s;
+  }
+  .wish-from.visible { opacity: 1; }
+
+  /* ─── INTERACTIVE STAR WISH ─── */
+  #stars-section {
+    background: var(--text-dark);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #stars-section .section-title {
+    color: var(--lavender-light);
+  }
+  #stars-section .section-label {
+    color: var(--lavender-mid);
+  }
+
+  .stars-subtitle {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transition: opacity 0.8s 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .stars-subtitle.visible { opacity: 1; }
+
+  #star-canvas {
+    display: block;
+    margin: 0 auto;
+    cursor: crosshair;
+    border-radius: 4px;
+  }
+
+  .stars-hint {
+    color: var(--lavender-mid);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    opacity: 0.6;
+  }
+
+  /* ─── CAKE ─── */
+  #cake-section {
+    padding: 8rem 2rem;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .cake-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .cake-svg-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .candles-blow-btn {
+    background: none;
+    border: 1.5px solid var(--lavender-mid);
+    border-radius: 999px;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--lavender-dark);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+  .candles-blow-btn:hover {
+    background: var(--lavender-pale);
+    border-color: var(--lavender-deep);
+    transform: scale(1.03);
+  }
+  .candles-blow-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+  }
+
+  .cake-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--lavender-deep);
+    min-height: 2.5rem;
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+  .cake-message.show { opacity: 1; }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--lavender-pale);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--lavender-light);
+  }
+
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  footer .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--lavender-deep);
+    letter-spacing: 0.1em;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--lavender-pale); }
+  ::-webkit-scrollbar-thumb { background: var(--lavender-mid); border-radius: 2px; }
+
+  /* Letter scroll */
+  .letter-card::-webkit-scrollbar { width: 3px; }
+  .letter-card::-webkit-scrollbar-thumb { background: var(--lavender-light); }
+
+  /* Utility */
+  .delay-1 { transition-delay: 0.1s !important; }
+  .delay-2 { transition-delay: 0.2s !important; }
+  .delay-3 { transition-delay: 0.3s !important; }
+  .delay-4 { transition-delay: 0.4s !important; }
+  .delay-5 { transition-delay: 0.5s !important; }
+  .delay-6 { transition-delay: 0.6s !important; }
+
+  /* ─── CUSTOMIZABLE WISHLIST ─── */
+  #wishlist-section {
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, #fff 0%, var(--lavender-pale) 100%);
+    text-align: center;
+  }
+  .wishlist-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    margin-bottom: 4rem;
+  }
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .wishlist-item {
+    background: var(--white);
+    border: 1px solid var(--lavender-light);
+    border-radius: 2px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s, transform 0.5s, background 0.2s;
+  }
+  .wishlist-item.visible { opacity: 1; transform: translateY(0); }
+  .wishlist-item:hover { background: var(--lavender-pale); }
+  .wishlist-icon {
+    font-size: 1.1rem;
+    min-width: 1.4rem;
+    margin-top: 2px;
+  }
+  .wishlist-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.55;
+  }
+
+  /* ─── ABOUT HER CUSTOMIZER ─── */
+  #customize-section {
+    padding: 6rem 2rem;
+    background: var(--lavender-pale);
+    text-align: center;
+  }
+  .customize-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+  }
+  .customize-form {
+    max-width: 680px;
+    margin: 0 auto 3rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .customize-field {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--white);
+    border: 1px solid var(--lavender-light);
+    border-radius: 2px;
+    padding: 0.9rem 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .customize-field:focus-within { border-color: var(--lavender-mid); }
+  .customize-field label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--lavender-deep);
+    white-space: nowrap;
+    font-style: italic;
+    min-width: 160px;
+  }
+  .customize-field input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: transparent;
+    font-weight: 300;
+  }
+  .customize-field input::placeholder { color: var(--text-soft); opacity: 0.6; }
+  .customize-btn {
+    background: none;
+    border: 1.5px solid var(--lavender-mid);
+    border-radius: 999px;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--lavender-dark);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+    margin: 0 auto;
+    display: block;
+  }
+  .customize-btn:hover {
+    background: var(--lavender-pale);
+    border-color: var(--lavender-deep);
+    transform: scale(1.03);
+  }
+  .about-her-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 860px;
+    margin: 2rem auto 0;
+    text-align: left;
+  }
+  .about-card {
+    background: var(--white);
+    border: 1px solid var(--lavender-light);
+    border-radius: 2px;
+    padding: 1.2rem 1.4rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .about-card.show { opacity: 1; transform: translateY(0); }
+  .about-card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--lavender-deep);
+    margin-bottom: 0.4rem;
+  }
+  .about-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.45;
+  }
+  .about-card-value.empty { color: var(--text-soft); font-size: 0.85rem; font-style: normal; }
+
+  /* ─── MUSIC PLAYER ─── */
+  #music-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9990;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1.5px solid var(--lavender-mid);
+    box-shadow: 0 4px 24px rgba(138,119,192,0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeIn 1s 3s forwards;
+  }
+  #music-btn:hover {
+    background: var(--lavender-pale);
+    border-color: var(--lavender-deep);
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(138,119,192,0.28);
+  }
+  #music-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--lavender-deep);
+    transition: opacity 0.2s;
+  }
+  #music-btn .icon-pause { display: none; }
+  #music-btn.playing .icon-play  { display: none; }
+  #music-btn.playing .icon-pause { display: block; }
+
+  /* Ripple ring when playing */
+  #music-btn::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--lavender-mid);
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 0.3s;
+  }
+  #music-btn.playing::before {
+    animation: musicRipple 2s ease-out infinite;
+  }
+  @keyframes musicRipple {
+    0%   { transform: scale(1);    opacity: 0.6; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+
+<!-- ─── BACKGROUND MUSIC ─── -->
+<!-- 🎵 TO USE: place your MP3 file in the same folder as this HTML file -->
+<!-- 🎵 Then replace "your-song.mp3" below with your actual filename     -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="perfectt_6haUFAFF.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-btn" title="toggle music" onclick="toggleMusic()">
+  <!-- Play icon -->
+  <svg class="icon-play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 5.14v14l11-7-11-7z"/>
+  </svg>
+  <!-- Pause icon -->
+  <svg class="icon-pause" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>
+</button>
+
+<!-- Floating Petals -->
+<div id="petals"></div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg-circle" style="width:600px;height:600px;top:-100px;left:-150px;"></div>
+  <div class="hero-bg-circle" style="width:400px;height:400px;bottom:-80px;right:-100px;animation-delay:3s;"></div>
+  <div class="hero-bg-circle" style="width:200px;height:200px;top:30%;right:10%;animation-delay:1.5s;"></div>
+
+  <p class="hero-eyebrow">24th Birthday</p>
+  <h1 class="hero-title">Happy Birthday,</h1>
+  <div class="hero-name">Peru</div>
+  <p class="hero-subtitle">made with all my heart &nbsp;♡</p>
+
+  <div class="scroll-hint" onclick="document.getElementById('envelope-section').scrollIntoView({behavior:'smooth'})">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── ENVELOPE ─── -->
+<section id="envelope-section">
+  <p class="section-label" id="lbl-env">A letter for you</p>
+  <div class="envelope-wrapper" onclick="openLetter()">
+    <div class="envelope">
+      <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="softShadow">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#b8a9d9" flood-opacity="0.2"/>
+          </filter>
+        </defs>
+        <!-- Envelope body -->
+        <rect x="0" y="40" width="320" height="180" rx="4" fill="#f5f2fc" filter="url(#softShadow)"/>
+        <!-- Envelope flap open -->
+        <path d="M0 40 L160 130 L320 40 Z" fill="#e8e0f5" stroke="#c9bce6" stroke-width="0.8"/>
+        <!-- Bottom flap -->
+        <path d="M0 220 L120 130 L160 155 L200 130 L320 220 Z" fill="#ede8f8" stroke="none"/>
+        <!-- Side flaps -->
+        <path d="M0 40 L0 220 L120 130 Z" fill="#eae4f5"/>
+        <path d="M320 40 L320 220 L200 130 Z" fill="#eae4f5"/>
+        <!-- Wax seal -->
+        <circle cx="160" cy="145" r="22" fill="#b8a9d9" opacity="0.9"/>
+        <circle cx="160" cy="145" r="18" fill="none" stroke="#e8e0f5" stroke-width="1"/>
+        <text x="160" y="150" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#f5f2fc" font-style="italic">♡</text>
+        <!-- Envelope lines decoration -->
+        <line x1="60" y1="100" x2="120" y2="100" stroke="#c9bce6" stroke-width="0.5" opacity="0.4"/>
+        <line x1="60" y1="108" x2="100" y2="108" stroke="#c9bce6" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+    </div>
+    <p class="envelope-hint">tap to open ✦</p>
+  </div>
+</section>
+
+<!-- Letter Modal -->
+<div class="letter-overlay" id="letterOverlay" onclick="if(event.target===this)closeLetter()">
+  <div class="letter-card">
+    <button class="letter-close" onclick="closeLetter()">✕</button>
+    <p class="letter-date">May 4th &nbsp;·&nbsp; Always & forever</p>
+    <div class="letter-body">
+      <p>My <em>Peru,</em></p>
+      <p>I've said this a thousand times and I'll keep saying it. You are the most perfect person for me and I'm so grateful for everything you are.</p>
+      <p>You taught me things I never thought I'd learn. How to take care of myself, the people around me, the little things I never paid attention to. Every single gap in me, you filled it without even trying.</p>
+      <p>I think about the times you went through things quietly, when I was too far to be right there. That feeling of not being able to hold you through it, that's something I carry. You went through it and you came out stronger and I just want you to know I saw all of it.</p>
+      <p>You always say I put in more effort but honestly <em>you just being there</em> is worth more than anything I've ever done. None of it would mean anything without you. (I know you're nodding right now.)</p>
+      <p>That dream we had in 2022, holding hands, roaming around, going places, making food, dancing in the kitchen, it's becoming real. Slowly. And I love every second of it with you.</p>
+      <p>You are the only person I have ever loved with everything I have. Being with you is the most peaceful thing I know. <em>Sabse pyaari meri Peru.</em></p>
+      <p>I'm proud of you every single day. Please believe in yourself the way I believe in you.</p>
+      <p>I'm not going anywhere. My love for you is like energy, it doesn't end, it just changes form. Always around you. Always protecting you.</p>
+      <p>I love you so much more than anything, babe.</p>
+    </div>
+    <div class="letter-signature">from your Kid &nbsp; I purple you, my eternity ♡</div>
+  </div>
+</div>
+
+<!-- ─── 24 REASONS ─── -->
+
+<!-- ─── CAMERA POLAROID ─── -->
+<section id="camera-section">
+  <p class="section-label" id="lbl-cam">our little photo booth</p>
+  <h2 class="section-title" id="cam-title">capture this <em>moment</em></h2>
+  <p class="cam-subtitle" id="cam-sub">take a picture together — it will turn into a polaroid ♡</p>
+
+  <div class="cam-layout">
+    <div class="viewfinder-wrap">
+      <div class="viewfinder-frame">
+        <video id="camVideo" autoplay playsinline muted></video>
+        <div class="vf-corners">
+          <span class="vfc tl"></span><span class="vfc tr"></span>
+          <span class="vfc bl"></span><span class="vfc br"></span>
+        </div>
+        <div class="vf-flash" id="vfFlash"></div>
+      </div>
+      <div class="cam-controls">
+        <button class="cam-btn cam-secondary" id="switchBtn" onclick="switchCamera()">&#8635;</button>
+        <button class="cam-btn cam-shutter" id="shutterBtn" onclick="takePhoto()"><span class="shutter-inner"></span></button>
+        <button class="cam-btn cam-secondary" id="clearBtn" onclick="clearAll()">&#10005;</button>
+      </div>
+      <p class="cam-hint" id="camHint">allow camera to begin</p>
+    </div>
+    <div class="polaroid-wall" id="polaroidWall">
+      <div class="wall-empty" id="wallEmpty">
+        <p>your polaroids appear here</p>
+      </div>
+    </div>
+  </div>
+  <canvas id="snapCanvas" style="display:none"></canvas>
+</section>
+
+<section id="reasons">
+  <p class="section-label" id="lbl-reasons">because you deserve to know</p>
+  <h2 class="section-title" id="reasons-title">24 reasons I love <em>you</em></h2>
+  <p class="reasons-intro">one for every beautiful year</p>
+
+  <div class="reasons-grid" id="reasonsGrid"></div>
+</section>
+
+
+<!-- ─── MY WISHLIST FOR HER ─── -->
+<section id="wishlist-section">
+  <p class="section-label" id="lbl-wishlist">from your kid, with all his heart</p>
+  <h2 class="section-title" id="wishlist-title">my wishes for <em>you</em></h2>
+  <p class="wishlist-intro">the only things I truly want from you this year</p>
+  <div class="wishlist-grid" id="wishlistGrid"></div>
+</section>
+
+<!-- ─── ABOUT HER CUSTOMIZER ─── -->
+<section id="customize-section">
+  <p class="section-label" id="lbl-customize">just between us</p>
+  <h2 class="section-title" id="customize-title">things only <em>you</em> would know</h2>
+  <p class="customize-intro">fill these in — make this page truly yours ♡</p>
+  <div class="customize-form">
+    <div class="customize-field">
+      <label>her favourite food</label>
+      <input type="text" id="cf-food" placeholder="what she could eat every day…" maxlength="60"/>
+    </div>
+    <div class="customize-field">
+      <label>her favourite song</label>
+      <input type="text" id="cf-song" placeholder="the one she plays on repeat…" maxlength="60"/>
+    </div>
+    <div class="customize-field">
+      <label>her favourite place</label>
+      <input type="text" id="cf-place" placeholder="somewhere she loves to be…" maxlength="60"/>
+    </div>
+    <div class="customize-field">
+      <label>the thing I love most</label>
+      <input type="text" id="cf-love" placeholder="what I notice first about her…" maxlength="80"/>
+    </div>
+    <div class="customize-field">
+      <label>our favourite memory</label>
+      <input type="text" id="cf-memory" placeholder="the moment I think of most…" maxlength="80"/>
+    </div>
+    <div class="customize-field">
+      <label>a secret only we know</label>
+      <input type="text" id="cf-secret" placeholder="just for us…" maxlength="80"/>
+    </div>
+  </div>
+  <button class="customize-btn" onclick="saveCustom()">save our little world ♡</button>
+  <div class="about-her-cards" id="aboutCards" style="display:none"></div>
+</section>
+
+<!-- ─── WISH ─── -->
+<section id="wish">
+  <div class="wish-bloom" style="width:500px;height:500px;top:-100px;left:-100px;opacity:0.5;"></div>
+  <div class="wish-bloom" style="width:300px;height:300px;bottom:-50px;right:-50px;opacity:0.4;"></div>
+  <div class="wish-number">24</div>
+  <div class="wish-content">
+    <p class="section-label" id="lbl-wish">my birthday wish for you</p>
+    <blockquote class="wish-quote" id="wishQuote">
+      "May your 24th year be full of mornings that feel like magic, of love that holds you gently, of laughter that fills the room — and may you always know that someone thinks the world is brighter because you're in it."
+    </blockquote>
+    <p class="wish-from" id="wishFrom">— written just for you, Peru ♡</p>
+  </div>
+</section>
+
+<!-- ─── STARS ─── -->
+<section id="stars-section">
+  <p class="section-label" id="lbl-stars">make a wish</p>
+  <h2 class="section-title" id="stars-title">click the sky to plant a star for Peru</h2>
+  <p class="stars-subtitle" id="stars-sub">every star is a wish for her happiness</p>
+  <canvas id="star-canvas" width="660" height="320"></canvas>
+  <p class="stars-hint">click anywhere on the sky ✦</p>
+</section>
+
+<!-- ─── CAKE ─── -->
+<section id="cake-section">
+  <p class="section-label" id="lbl-cake">blow the candles</p>
+  <h2 class="section-title" id="cake-title">make a <em>wish</em></h2>
+  <div class="cake-wrapper">
+    <div class="cake-svg-wrap">
+      <svg id="cakeSVG" viewBox="0 0 340 300" width="340" height="300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Plate -->
+        <ellipse cx="170" cy="268" rx="120" ry="14" fill="#e8e0f5"/>
+        <!-- Cake tier 1 (bottom) -->
+        <rect x="60" y="195" width="220" height="70" rx="6" fill="#c9bce6"/>
+        <ellipse cx="170" cy="195" rx="110" ry="14" fill="#d4c8ee"/>
+        <ellipse cx="170" cy="265" rx="110" ry="14" fill="#b8a9d9"/>
+        <!-- Tier 1 decoration -->
+        <path d="M60 220 Q85 215 110 220 Q135 215 160 220 Q185 215 210 220 Q235 215 260 220 Q285 215 280 220" fill="none" stroke="#e8e0f5" stroke-width="1.5" opacity="0.8"/>
+        <!-- Cake tier 2 (middle) -->
+        <rect x="90" y="135" width="160" height="62" rx="6" fill="#b8a9d9"/>
+        <ellipse cx="170" cy="135" rx="80" ry="11" fill="#c9bce6"/>
+        <ellipse cx="170" cy="197" rx="80" ry="11" fill="#a090c8"/>
+        <!-- Tier 2 decoration - rosettes -->
+        <circle cx="130" cy="165" r="8" fill="#e8c4d4"/>
+        <circle cx="170" cy="165" r="8" fill="#e8c4d4"/>
+        <circle cx="210" cy="165" r="8" fill="#e8c4d4"/>
+        <circle cx="130" cy="165" r="4" fill="#d4a0bc"/>
+        <circle cx="170" cy="165" r="4" fill="#d4a0bc"/>
+        <circle cx="210" cy="165" r="4" fill="#d4a0bc"/>
+        <!-- Cake tier 3 (top) -->
+        <rect x="115" y="85" width="110" height="52" rx="6" fill="#a090c8"/>
+        <ellipse cx="170" cy="85" rx="55" ry="9" fill="#b8a9d9"/>
+        <ellipse cx="170" cy="137" rx="55" ry="9" fill="#8a77c0"/>
+        <!-- Top decoration - "24" -->
+        <text x="170" y="118" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-style="italic" fill="#f5f2fc" font-weight="300">24</text>
+
+        <!-- Candles group -->
+        <g id="candlesGroup">
+          <!-- Candle 1 -->
+          <rect x="138" y="58" width="10" height="28" rx="2" fill="#d4c8ee"/>
+          <ellipse cx="143" cy="58" rx="5" ry="3" fill="#c0b4e4"/>
+          <g class="flame" id="flame1">
+            <ellipse cx="143" cy="48" rx="4" ry="7" fill="#ffd6a5" opacity="0.9"/>
+            <ellipse cx="143" cy="50" rx="2.5" ry="5" fill="#ffb685"/>
+            <circle cx="143" cy="52" r="1.5" fill="#ff8c69" opacity="0.7"/>
+          </g>
+          <!-- Candle 2 -->
+          <rect x="163" y="55" width="10" height="31" rx="2" fill="#e8c4d4"/>
+          <ellipse cx="168" cy="55" rx="5" ry="3" fill="#d4a4c4"/>
+          <g class="flame" id="flame2">
+            <ellipse cx="168" cy="45" rx="4" ry="7" fill="#ffd6a5" opacity="0.9"/>
+            <ellipse cx="168" cy="47" rx="2.5" ry="5" fill="#ffb685"/>
+            <circle cx="168" cy="49" r="1.5" fill="#ff8c69" opacity="0.7"/>
+          </g>
+          <!-- Candle 3 -->
+          <rect x="188" y="58" width="10" height="28" rx="2" fill="#c9bce6"/>
+          <ellipse cx="193" cy="58" rx="5" ry="3" fill="#b8a9d9"/>
+          <g class="flame" id="flame3">
+            <ellipse cx="193" cy="48" rx="4" ry="7" fill="#ffd6a5" opacity="0.9"/>
+            <ellipse cx="193" cy="50" rx="2.5" ry="5" fill="#ffb685"/>
+            <circle cx="193" cy="52" r="1.5" fill="#ff8c69" opacity="0.7"/>
+          </g>
+        </g>
+
+        <!-- Drips -->
+        <path d="M100 195 Q103 210 100 220" fill="none" stroke="#d4c8ee" stroke-width="4" stroke-linecap="round"/>
+        <path d="M240 195 Q243 208 241 218" fill="none" stroke="#d4c8ee" stroke-width="4" stroke-linecap="round"/>
+        <path d="M170 135 Q174 148 172 158" fill="none" stroke="#c9bce6" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M130 135 Q133 147 130 155" fill="none" stroke="#c9bce6" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <button class="candles-blow-btn" id="blowBtn" onclick="blowCandles()">
+      blow out the candles ✨
+    </button>
+    <div class="cake-message" id="cakeMsg">
+      Happy Birthday, my darling Peru 🌸
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>made with love, for the one who holds my heart</p>
+  <div class="footer-name">Peru ♡</div>
+</footer>
+
+<script>
+// ─── CAMERA POLAROID ───
+(function() {
+  let stream = null;
+  let facingMode = 'user';
+  let photoCount = 0;
+  const video = document.getElementById('camVideo');
+  const hint = document.getElementById('camHint');
+  const flash = document.getElementById('vfFlash');
+  const wall = document.getElementById('polaroidWall');
+  const wallEmpty = document.getElementById('wallEmpty');
+  const clearBtn = document.getElementById('clearBtn');
+  const snap = document.getElementById('snapCanvas');
+  const captions = [
+    'birthday magic ♡', 'us, always', 'captured with love',
+    'this moment', 'happy & together', 'my favourite person',
+    'forever & a day', 'pure joy', 'you & me'
+  ];
+
+  async function startCamera() {
+    try {
+      if (stream) stream.getTracks().forEach(t => t.stop());
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode, width: { ideal: 1280 }, height: { ideal: 720 } },
+        audio: false
+      });
+      video.srcObject = stream;
+      hint.textContent = 'smile! ♡';
+    } catch(e) {
+      hint.textContent = 'camera access denied — please allow in browser settings';
+    }
+  }
+
+  window.switchCamera = function() {
+    facingMode = facingMode === 'user' ? 'environment' : 'user';
+    startCamera();
+  };
+
+  window.takePhoto = function() {
+    if (!stream) return;
+    // Flash
+    flash.classList.add('flash');
+    setTimeout(() => flash.classList.remove('flash'), 150);
+
+    // Draw raw frame
+    const vw = video.videoWidth || 640;
+    const vh = video.videoHeight || 480;
+    const size = Math.min(vw, vh);
+    snap.width = 400; snap.height = 320;
+    const ctx = snap.getContext('2d');
+
+    // Mirror if front camera
+    if (facingMode === 'user') {
+      ctx.translate(snap.width, 0);
+      ctx.scale(-1, 1);
+    }
+    // Crop centre square then draw to 400x320
+    const sx = (vw - size) / 2;
+    const sy = (vh - size) / 2;
+    ctx.drawImage(video, sx, sy, size, size, 0, 0, 400, 320);
+    if (facingMode === 'user') { ctx.setTransform(1,0,0,1,0,0); }
+
+    // Apply polaroid filter: slight warm fade + grain + vignette
+    applyPolaroidFilter(ctx, 400, 320);
+
+    const dataUrl = snap.toDataURL('image/jpeg', 0.92);
+    addPolaroid(dataUrl);
+    photoCount++;
+    if (photoCount === 1) {
+      clearBtn.style.opacity = '1';
+      clearBtn.style.pointerEvents = 'auto';
+    }
+  };
+
+  function applyPolaroidFilter(ctx, w, h) {
+    const img = ctx.getImageData(0, 0, w, h);
+    const d = img.data;
+
+    // Step 1: Lift blacks + compress dynamic range (Polaroid One600 faded film look)
+    for (let i = 0; i < d.length; i += 4) {
+      d[i]   = d[i]   * 0.78 + 32;  // R: lift shadows heavily
+      d[i+1] = d[i+1] * 0.76 + 26;  // G: muted midtones
+      d[i+2] = d[i+2] * 0.74 + 34;  // B: slight blue/violet lift (expired film)
+    }
+
+    // Step 2: Warm honey cast in highlights (golden-hour Polaroid 600 tone)
+    for (let i = 0; i < d.length; i += 4) {
+      const lum = (d[i]*0.299 + d[i+1]*0.587 + d[i+2]*0.114) / 255;
+      const hi = lum * lum * lum; // only in brightest highlights
+      d[i]   = Math.min(255, d[i]   + hi * 30);   // warm amber push
+      d[i+1] = Math.min(255, d[i+1] + hi * 14);   // golden green
+      d[i+2] = Math.max(0,   d[i+2] - hi * 10);   // pull blue from highlights
+    }
+
+    // Step 3: Lavender/mauve shadow tint (vintage expired Polaroid, lovely for portraits)
+    for (let i = 0; i < d.length; i += 4) {
+      const lum = (d[i]*0.299 + d[i+1]*0.587 + d[i+2]*0.114) / 255;
+      const sh = Math.pow(1 - lum, 2.2);
+      d[i]   = Math.min(255, d[i]   + sh * 10);   // slight red in shadows
+      d[i+1] = Math.min(255, d[i+1] + sh * 4);    // faint green
+      d[i+2] = Math.min(255, d[i+2] + sh * 22);   // lavender/blue in shadows
+    }
+
+    // Step 4: Soft saturation (not too vivid — Polaroid feels gentle, not punchy)
+    for (let i = 0; i < d.length; i += 4) {
+      const avg = (d[i] + d[i+1] + d[i+2]) / 3;
+      d[i]   = Math.min(255, Math.max(0, avg + (d[i]   - avg) * 1.14));
+      d[i+1] = Math.min(255, Math.max(0, avg + (d[i+1] - avg) * 1.09));
+      d[i+2] = Math.min(255, Math.max(0, avg + (d[i+2] - avg) * 1.06));
+    }
+
+    // Step 5: Soft film grain (feels like actual photo paper, not digital noise)
+    for (let i = 0; i < d.length; i += 4) {
+      const lum = (d[i] + d[i+1] + d[i+2]) / 765;
+      const grainStr = 3.5 * Math.sqrt(lum * (1 - lum)); // midtone-focused grain
+      const g = (Math.random() - 0.5) * 18 * grainStr;
+      d[i]   = Math.min(255, Math.max(0, d[i]   + g));
+      d[i+1] = Math.min(255, Math.max(0, d[i+1] + g * 0.9));
+      d[i+2] = Math.min(255, Math.max(0, d[i+2] + g * 0.85));
+    }
+
+    ctx.putImageData(img, 0, 0);
+
+    // Step 6: Deep warm vignette (off-centre — feels hand-held, not symmetrical)
+    const vg = ctx.createRadialGradient(w*0.48, h*0.50, h*0.12, w*0.5, h*0.55, h*0.88);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(0.55, 'rgba(30,10,20,0.06)');
+    vg.addColorStop(0.82, 'rgba(50,15,10,0.28)');
+    vg.addColorStop(1, 'rgba(40,10,5,0.62)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, w, h);
+
+    // Step 7: Soft central glow (Polaroid 600 warm centre characteristic)
+    const glow = ctx.createRadialGradient(w*0.5, h*0.42, 0, w*0.5, h*0.45, w*0.65);
+    glow.addColorStop(0, 'rgba(255,220,160,0.09)');
+    glow.addColorStop(0.6, 'rgba(255,200,130,0.03)');
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, w, h);
+
+    // Step 8: Lavender light leak — top-left corner (expired film magic)
+    const leakAngle = Math.random() > 0.5 ? 1 : 0; // random corner
+    const lx1 = leakAngle ? w : 0, ly1 = 0, lx2 = leakAngle ? w*0.4 : w*0.6, ly2 = h*0.35;
+    const leak = ctx.createLinearGradient(lx1, ly1, lx2, ly2);
+    leak.addColorStop(0, 'rgba(200,160,230,0.16)');  // soft violet/lavender leak
+    leak.addColorStop(0.35, 'rgba(255,180,140,0.07)');
+    leak.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = leak;
+    ctx.fillRect(0, 0, w, h);
+
+    // Step 9: Subtle pink/rose dust at bottom (dreamy portrait quality)
+    const dust = ctx.createLinearGradient(0, h*0.75, 0, h);
+    dust.addColorStop(0, 'rgba(0,0,0,0)');
+    dust.addColorStop(1, 'rgba(180,120,150,0.10)');
+    ctx.fillStyle = dust;
+    ctx.fillRect(0, h*0.75, w, h*0.25);
+
+    // Step 10: Slight horizontal fading bands (real Polaroid development unevenness)
+    for (let y = 0; y < h; y += Math.floor(h/6)) {
+      const band = ctx.createLinearGradient(0, y, 0, y + h/6);
+      const alpha = (Math.random() * 0.018);
+      band.addColorStop(0, `rgba(255,240,220,${alpha})`);
+      band.addColorStop(0.5, 'rgba(0,0,0,0)');
+      band.addColorStop(1, `rgba(220,210,240,${alpha * 0.5})`);
+      ctx.fillStyle = band;
+      ctx.fillRect(0, y, w, h/6);
+    }
+  }
+
+  function addPolaroid(dataUrl) {
+    if (wallEmpty) wallEmpty.style.display = 'none';
+    const rots = [-3, -1.5, -0.5, 1, 2.5, 3.5, -2, 0.8];
+    const rot = rots[photoCount % rots.length];
+    const caption = captions[photoCount % captions.length];
+
+    const pol = document.createElement('div');
+    pol.className = 'cam-polaroid';
+    pol.style.setProperty('--prot', rot + 'deg');
+
+    const img = document.createElement('img');
+    img.src = dataUrl;
+
+    const cap = document.createElement('div');
+    cap.className = 'pol-caption';
+    cap.textContent = caption;
+
+    // Download link
+    const dl = document.createElement('a');
+    dl.className = 'pol-download';
+    dl.href = dataUrl;
+    dl.download = 'peru-polaroid-' + (photoCount + 1) + '.jpg';
+    dl.title = 'save';
+    dl.textContent = '↓';
+
+    pol.appendChild(dl);
+    pol.appendChild(img);
+    pol.appendChild(cap);
+    wall.appendChild(pol);
+    pol.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  window.clearAll = function() {
+    document.querySelectorAll('.cam-polaroid').forEach(p => p.remove());
+    if (wallEmpty) wallEmpty.style.display = '';
+    photoCount = 0;
+    clearBtn.style.opacity = '0';
+    clearBtn.style.pointerEvents = 'none';
+  };
+
+  // Auto-start when section is visible
+  const camIo = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !stream) startCamera();
+  }, { threshold: 0.3 });
+  const camSection = document.getElementById('camera-section');
+  if (camSection) camIo.observe(camSection);
+
+  // Observe cam-subtitle
+  const camSub = document.getElementById('cam-sub');
+  if (camSub) {
+    const subIo = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) camSub.classList.add('visible');
+    }, { threshold: 0.2 });
+    subIo.observe(camSub);
+  }
+})();
+
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const trail = document.getElementById('cursorTrail');
+let mx = 0, my = 0, tx = 0, ty = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+function animateTrail() {
+  tx += (mx - tx) * 0.15;
+  ty += (my - ty) * 0.15;
+  trail.style.left = tx + 'px';
+  trail.style.top = ty + 'px';
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
+
+// ─── PETALS ───
+const petalColors = ['#e8c4d4','#c9bce6','#d4c8ee','#b8a9d9','#f0e8f8','#e8d4ec'];
+const petalsContainer = document.getElementById('petals');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const size = 6 + Math.random() * 10;
+  const left = Math.random() * 100;
+  const delay = Math.random() * 12;
+  const duration = 10 + Math.random() * 12;
+  const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+  p.style.cssText = `left:${left}%;width:${size}px;height:${size * 1.4}px;background:${color};border-radius:50% 50% 50% 0;animation-duration:${duration}s;animation-delay:${delay}s;`;
+  petalsContainer.appendChild(p);
+}
+
+// ─── INTERSECTION OBSERVER ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section-label,.section-title,.stars-subtitle,.wish-quote,.wish-from').forEach(el => io.observe(el));
+
+// Polaroids with stagger
+// ─── 24 REASONS ───
+const reasons = [
+  "you taught me to take care of myself, my parents, my friends — things I never thought I’d ever learn",
+  "every tiny thing I lacked, you quietly filled in — without even realising you were doing it",
+  "the sound of your laugh — I could listen to it for the rest of my life and still want more",
+  "watching you smile — it is genuinely the best thing my eyes ever get to do",
+  "you healed me more than I ever healed you, without knowing it for even a second",
+  "you just being there — that single fact outweighs everything I have ever done or could do",
+  "how you make me fall for you harder with every single fraction of every second",
+  "being with you is the most peaceful thing I have ever known in my entire life",
+  "the dream we built in 2022–23 — roaming together, holding hands, clicking photos, cooking, dancing — and how it is becoming real",
+  "you are the only person I have ever loved with my whole soul, heart, mind and body",
+  "how ordinary things — food, movies, silence, just existing next to each other — feel like everything when you’re there",
+  "your strength in carrying hard things alone, even when I was too far away to hold you through them",
+  "the way you love the people in your life so deeply and so quietly",
+  "how you make me want to be better — not because you ask it, but just by being who you are",
+  "the ‘kuch nahi’ that carries a hundred feelings I am still learning to read — and how you let me keep trying",
+  "how everything I do got measurably better because of what I learned from watching you",
+  "you are the best daughter, sister, granddaughter, friend and girlfriend — all at once, effortlessly",
+  "my heart does not beat for me anymore — it beats for you, and I would not have it any other way",
+  "your potential is genuinely beyond this world, and I will keep saying it until you believe it",
+  "how you made growing up feel less heavy just by being someone I could talk to, connect with, hear",
+  "you are my future — and I have never been more certain of anything in my life",
+  "the way my love for you works like energy: it cannot be created, it cannot be destroyed, it just is",
+  "24 years of you becoming exactly the person I get to love every single day",
+  "simply, entirely, forever — you. just you. sabse pyaari meri peru."
+];
+
+const grid = document.getElementById('reasonsGrid');
+reasons.forEach((r, i) => {
+  const card = document.createElement('div');
+  card.className = 'reason-card';
+  card.innerHTML = `<span class="reason-num">${i + 1}</span><p class="reason-text">${r}</p>`;
+  grid.appendChild(card);
+});
+
+const reasonCards = document.querySelectorAll('.reason-card');
+const rcIo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      reasonCards.forEach((c, i) => {
+        setTimeout(() => c.classList.add('visible'), i * 60);
+      });
+      rcIo.disconnect();
+    }
+  });
+}, { threshold: 0.05 });
+if (reasonCards.length) rcIo.observe(reasonCards[0]);
+
+// ─── LETTER ───
+function openLetter() {
+  document.getElementById('letterOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLetter() {
+  document.getElementById('letterOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── STAR CANVAS ───
+const canvas = document.getElementById('star-canvas');
+const ctx = canvas.getContext('2d');
+const stars = [];
+
+function drawStarBg() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Deep lavender night bg
+  const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  grad.addColorStop(0, '#2a1f4a');
+  grad.addColorStop(1, '#3a2f5c');
+  ctx.fillStyle = grad;
+  ctx.roundRect(0, 0, canvas.width, canvas.height, 4);
+  ctx.fill();
+  // Background ambient stars
+  for (let i = 0; i < 60; i++) {
+    const s = ambientStars[i];
+    ctx.globalAlpha = 0.3 + Math.sin(Date.now() * 0.001 + i) * 0.15;
+    ctx.fillStyle = '#e8e0f5';
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+const ambientStars = Array.from({length: 60}, () => ({
+  x: Math.random() * 660,
+  y: Math.random() * 320,
+  r: 0.5 + Math.random() * 1.5
+}));
+
+function drawStar(x, y, size, color, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 12;
+  ctx.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+    const innerAngle = ((i * 4 + 2) * Math.PI) / 5 - Math.PI / 2;
+    if (i === 0) ctx.moveTo(x + size * Math.cos(angle), y + size * Math.sin(angle));
+    else ctx.lineTo(x + size * Math.cos(angle), y + size * Math.sin(angle));
+    ctx.lineTo(x + (size * 0.4) * Math.cos(innerAngle), y + (size * 0.4) * Math.sin(innerAngle));
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function animateCanvas() {
+  drawStarBg();
+  const now = Date.now();
+  stars.forEach((s, i) => {
+    const age = (now - s.born) / 1000;
+    const alpha = Math.min(1, age * 2) * (1 - Math.max(0, age - 3) * 0.2);
+    const pulse = 1 + Math.sin(now * 0.003 + i) * 0.12;
+    if (alpha > 0) drawStar(s.x, s.y, s.size * pulse, s.color, alpha);
+  });
+  requestAnimationFrame(animateCanvas);
+}
+
+const starColors = ['#e8e0f5','#c9bce6','#ffd6a5','#f5f2fc','#d4c8ee','#e8c4d4'];
+canvas.addEventListener('click', e => {
+  const rect = canvas.getBoundingClientRect();
+  const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+  const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+  stars.push({
+    x, y,
+    size: 5 + Math.random() * 8,
+    color: starColors[Math.floor(Math.random() * starColors.length)],
+    born: Date.now()
+  });
+  if (stars.length > 40) stars.shift();
+});
+
+animateCanvas();
+
+// ─── CAKE / BLOW CANDLES ───
+let blown = false;
+function blowCandles() {
+  if (blown) return;
+  blown = true;
+  document.getElementById('blowBtn').disabled = true;
+
+  const flames = document.querySelectorAll('.flame');
+  flames.forEach((f, i) => {
+    setTimeout(() => {
+      f.style.transition = 'opacity 0.4s';
+      f.style.opacity = '0';
+    }, i * 200);
+  });
+
+  setTimeout(() => {
+    document.getElementById('cakeMsg').classList.add('show');
+    launchConfetti();
+  }, 900);
+}
+
+function launchConfetti() {
+  const colors = ['#c9bce6','#e8c4d4','#b8a9d9','#f5f2fc','#d4a0bc','#8a77c0','#ffd6a5'];
+  for (let i = 0; i < 70; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      const x = 20 + Math.random() * 60;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = 6 + Math.random() * 8;
+      c.style.cssText = `left:${x}%;top:${40 + Math.random() * 20}%;width:${size}px;height:${size}px;background:${color};border-radius:${Math.random() > 0.5 ? '50%' : '2px'};`;
+      document.body.appendChild(c);
+      const angle = -180 + Math.random() * 360;
+      const dist = 100 + Math.random() * 200;
+      c.animate([
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist + 100}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], { duration: 1200 + Math.random() * 800, easing: 'cubic-bezier(0,0,0.3,1)', fill: 'forwards' });
+      setTimeout(() => c.remove(), 2200);
+    }, i * 30);
+  }
+}
+
+// ─── FLAME FLICKER ANIMATION ───
+const flameStyle = document.createElement('style');
+flameStyle.textContent = `
+  .flame { animation: flicker 0.8s ease-in-out infinite alternate; transform-origin: bottom center; }
+  @keyframes flicker {
+    0% { transform: scaleX(1) scaleY(1) rotate(-2deg); }
+    50% { transform: scaleX(0.9) scaleY(1.08) rotate(1deg); }
+    100% { transform: scaleX(1.05) scaleY(0.96) rotate(-1deg); }
+  }
+  #flame1 { animation-delay: 0s; }
+  #flame2 { animation-delay: 0.3s; }
+  #flame3 { animation-delay: 0.15s; }
+`;
+document.head.appendChild(flameStyle);
+
+
+// ─── WISHLIST ───
+const wishes = [
+  { icon: "🌸", text: "please take care of yourself — not just your skin, but your sleep, your food, your mind, all of it" },
+  { icon: "💧", text: "drink enough water (skin care can't just fix everything na)" },
+  { icon: "🥗", text: "eat clean and on time, and avoid the junk — mostly" },
+  { icon: "🌙", text: "sleep on time, your body works hard for you" },
+  { icon: "💛", text: "think positive — and on the hard days, remember I'm here" },
+  { icon: "🪞", text: "don't feel insecure about yourself — you are genuinely perfect" },
+  { icon: "🤍", text: "don't blame yourself for everything, please" },
+  { icon: "🌬️", text: "don't stress over small things — they rarely deserve it" },
+  { icon: "🦁", text: "don't get scared if anything big comes up — you are so much stronger than you think" },
+  { icon: "🗣️", text: "do talk to your friends — you have enough that are required, trust me" },
+  { icon: "🔒", text: "be a little careful about who you share everything with" },
+  { icon: "💪", text: "you can handle every single thing in this world — I believe that fully" }
+];
+
+const wGrid = document.getElementById('wishlistGrid');
+if (wGrid) {
+  wishes.forEach((w, i) => {
+    const el = document.createElement('div');
+    el.className = 'wishlist-item';
+    el.style.transitionDelay = (i * 50) + 'ms';
+    el.innerHTML = `<span class="wishlist-icon">${w.icon}</span><p class="wishlist-text">${w.text}</p>`;
+    wGrid.appendChild(el);
+  });
+  const wIo = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.wishlist-item').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 60);
+      });
+      wIo.disconnect();
+    }
+  }, { threshold: 0.05 });
+  wIo.observe(wGrid);
+}
+
+// Observe new section labels
+document.querySelectorAll('#lbl-wishlist,#lbl-customize,#wishlist-title,#customize-title').forEach(el => io.observe(el));
+
+// ─── CUSTOMIZE / ABOUT HER ───
+const customFields = [
+  { id: 'cf-food', label: 'her favourite food' },
+  { id: 'cf-song', label: 'her favourite song' },
+  { id: 'cf-place', label: 'her favourite place' },
+  { id: 'cf-love', label: 'the thing I love most' },
+  { id: 'cf-memory', label: 'our favourite memory' },
+  { id: 'cf-secret', label: 'a secret only we know' }
+];
+
+// Load saved values from sessionStorage
+customFields.forEach(f => {
+  const saved = sessionStorage.getItem('peru-' + f.id);
+  if (saved) document.getElementById(f.id).value = saved;
+});
+
+// Build cards if any saved
+function buildAboutCards() {
+  const container = document.getElementById('aboutCards');
+  container.innerHTML = '';
+  let hasAny = false;
+  customFields.forEach(f => {
+    const val = document.getElementById(f.id).value.trim();
+    if (val) hasAny = true;
+    const card = document.createElement('div');
+    card.className = 'about-card';
+    card.innerHTML = `<div class="about-card-label">${f.label}</div>
+      <div class="about-card-value ${val ? '' : 'empty'}">${val || 'not filled in yet…'}</div>`;
+    container.appendChild(card);
+    setTimeout(() => card.classList.add('show'), 80 * customFields.indexOf(f));
+  });
+  container.style.display = 'grid';
+}
+
+window.saveCustom = function() {
+  customFields.forEach(f => {
+    sessionStorage.setItem('peru-' + f.id, document.getElementById(f.id).value);
+  });
+  buildAboutCards();
+  document.getElementById('aboutCards').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+};
+
+// Auto-build on load if values exist
+if (customFields.some(f => sessionStorage.getItem('peru-' + f.id))) {
+  buildAboutCards();
+}
+
+
+// ─── MUSIC ───
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('music-btn');
+let musicStarted = false;
+
+function toggleMusic() {
+  if (bgMusic.paused) {
+    bgMusic.play().then(() => {
+      musicBtn.classList.add('playing');
+      musicStarted = true;
+    }).catch(() => {});
+  } else {
+    bgMusic.pause();
+    musicBtn.classList.remove('playing');
+  }
+}
+
+// Auto-attempt on first user interaction (browsers block autoplay until gesture)
+function tryAutoplay() {
+  if (musicStarted) return;
+  bgMusic.volume = 0.45;
+  bgMusic.play().then(() => {
+    musicBtn.classList.add('playing');
+    musicStarted = true;
+  }).catch(() => {
+    // Browser blocked — button is still there for manual start
+  });
+  document.removeEventListener('click', tryAutoplay);
+  document.removeEventListener('touchstart', tryAutoplay);
+  document.removeEventListener('keydown', tryAutoplay);
+}
+
+document.addEventListener('click', tryAutoplay);
+document.addEventListener('touchstart', tryAutoplay);
+document.addEventListener('keydown', tryAutoplay);
+
+</script>
+</body>
+</html>
